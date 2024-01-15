@@ -1,0 +1,31 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# style 設定
+plt.style.use('fivethirtyeight')
+
+# figzise 比例
+# dpi (dot per inch) 解析度
+plt.figure(num = 2,figsize=(8,5),dpi=100)
+
+# 產生一串數字(List), 從-3 ~ 3 之間固定間隔產生共50個數字
+x = np.linspace(-3, 3, 50)
+y1 = 2*x + 1 + np.random.random_sample(len(x))
+y2 = x**2+ np.random.random_sample(len(x))
+plt.plot(x,y1)
+plt.plot(x,y2)
+
+# 中文字型載入
+import matplotlib
+filename = r"E:\Eason\家教\python\matplotlib_tutorial\Noto_Sans_TC\NotoSansTC-Bold.otf"
+font = matplotlib.font_manager.FontProperties(fname = filename) # 載入字體
+
+# 加上 Xlabel, Ylabel (中文)
+plt.xlabel("X 標籤", loc = "right",fontproperties = font) # loc: location 位置(left/center/right)
+plt.ylabel("Y 標籤", loc = "top",fontproperties = font) # loc: location 位置(top/center/bottom)
+
+# 加上圖表標題 (中文)
+plt.title("這是中文標題",fontproperties = font)
+
+plt.tight_layout() #排擠一點，不要讓東西超出邊界
+plt.show()
